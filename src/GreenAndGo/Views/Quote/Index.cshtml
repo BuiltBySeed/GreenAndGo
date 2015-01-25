@@ -1,0 +1,14 @@
+﻿@model GreenAndGo.Models.QuoteViewModel
+@{
+    ViewBag.Title = "Quote";
+}
+
+<h1>@Model.OriginPostcode to @Model.DestinationPostcode</h1>
+@foreach(var quote in @Model.Quotes)
+{
+    <div>
+        <h2>@quote.Carrier</h2>
+        <h3>@quote.Service</h3>
+        <p>£@quote.Cost</p>
+    </div>
+}

@@ -3,16 +3,82 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GreenAndGo.Properties;
 
 namespace GreenAndGo.Controllers
 {
     public class QuoteController : Controller
     {
-        //
-        // GET: /Quote/
-        public ActionResult Index()
+      
+
+        public ActionResult Index(Models.QueryViewModel query)
         {
-            return View();
+            if (!query.Collection.HasValue)
+            {
+                query.Collection = DateTime.Now.AddDays(1);
+            }
+
+            var client = new Net.Sendvia.Client(Settings.Default.Client_Id, Settings.Default.Client_Secret);
+            var sQuote = client.Quote_Create(new Net.Sendvia.Models.Query
+            {
+                Id = Guid.NewGuid(),
+                Currency = 826,
+                Shipments = new List<Net.Sendvia.Models.Shipment>
+                {
+                    new Net.Sendvia.Models.Shipment
+                    {
+                        Collection = query.Collection.Value,
+                        Parcels = query.Parcels.Select(x=>
+                            {
+                                return new Net.Sendvia.Models.Parcel
+                                {
+                                   Weight = (int) x.Weight *1000, //Kg to g
+                                   Size = new Net.Sendvia.Models.Dimension
+                                   {
+                                       Length = (int)x.Length *10, //cm to mm
+                                       Height = (int)x.Height *10,//cm to mm
+                                       Width = (int)x.Width * 10,//cm to mm
+                                   }
+                                };
+                            }).ToList(),
+                        Sender = new Net.Sendvia.Models.Contact
+                        {
+                            Address = new Net.Sendvia.Models.Address
+                            {
+                                PostalArea= query.OriginPostcode,
+                                CountryIso = 826
+                            }
+                        },
+                        Recipient = new Net.Sendvia.Models.Contact
+                        {
+                            Address = new Net.Sendvia.Models.Address
+                            {
+                                PostalArea = query.DestinationPostcode,
+                                CountryIso = 826
+                            }
+                        }
+                    }
+                }
+            }, null);
+
+            var quote = new Models.QuoteViewModel
+            {
+                DestinationPostcode = query.DestinationPostcode,
+                OriginPostcode = query.OriginPostcode,
+                Quotes = sQuote.QuoteShipments.Select(qs =>
+                    {
+                        return new Models.Quote
+                        {
+                            ServiceId = qs.Service.Id,
+                            Service = qs.Service.Name, 
+                            Carrier = qs.Carrier.Name,
+                            Cost = qs.Cost
+                        };
+                    }
+                    ).ToArray()
+            };
+
+            return View(quote);
         }
 	}
 }
