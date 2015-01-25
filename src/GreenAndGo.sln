@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenAndGo", "GreenAndGo\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenAndGo.Tests", "..\..\..\Users\alex west\Development\GreenAndGo\GreenAndGo.Tests\GreenAndGo.Tests.csproj", "{1E930A77-19AD-4B8E-9141-461BF15E3F3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Sendvia.Client", "Net.Sendvia.Client\Net.Sendvia.Client.csproj", "{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1E930A77-19AD-4B8E-9141-461BF15E3F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E930A77-19AD-4B8E-9141-461BF15E3F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E930A77-19AD-4B8E-9141-461BF15E3F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
