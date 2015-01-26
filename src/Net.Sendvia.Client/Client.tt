@@ -1,7 +1,7 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" #>
-<#@ assembly name="C:\Development\Postal\Postal.Api\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll" #>
+<#@ assembly name="$(SolutionDir)\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
@@ -17,7 +17,7 @@ var code = new CodeGenerationTools(this);
 
 WriteHeader(fileManager);
 
-string baseUri = "http://localhost/Postal.Api";
+string baseUri = "http://www.sendvia.co.uk/rest/alpha5";
 string swaggerUri = baseUri + "/swagger/api-docs";
 dynamic api_docs = Help.MakeRequest(swaggerUri);
 List<dynamic> models = new List<dynamic>();
@@ -128,13 +128,9 @@ namespace Net.Sendvia
 
 	public class Client : RestClient
 	{
-#if DEBUG
-        private const string BaseUri = "http://devlocal/Postal.Api/";
-#else
+
         private const string BaseUri = "https://www.sendvia.co.uk/rest/alpha5/";
-#endif
-                     
-         
+
         public Client(string client_Id, string client_secret) : base(BaseUri) 
         {
             this.Authenticator = new OAuth2Authenticator(client_Id, client_secret);
@@ -148,15 +144,13 @@ public void EndWriteClassClient()
 #>	
 		private class OAuth2Authenticator :IAuthenticator
 		{
-#if DEBUG
-			private const string BaseUri = "http://devlocal/Postal.Website";
-#else
+
 			private const string BaseUri = "https://www.sendvia.co.uk/alpha5";
-#endif
 
 			private string _client_Id;
 			private string _client_Secret;
 			private OAuth2AuthorizationRequestHeaderAuthenticator _authenticator;
+			private DateTime _expiry;
 
 			public OAuth2Authenticator(string client_Id, string client_Secret)
 			{
@@ -166,7 +160,7 @@ public void EndWriteClassClient()
 
 			void IAuthenticator.Authenticate(IRestClient client, IRestRequest request)
 			{
-				if (_authenticator == null)
+				if (_authenticator == null || DateTime.UtcNow > _expiry)
 				{
 					var authRequest = new RestRequest("/token", Method.POST);
 					authRequest.AddParameter("client_id", _client_Id);
@@ -175,6 +169,7 @@ public void EndWriteClassClient()
 					authRequest.AddParameter("response_type", "token");
 					RestClient rs = new RestClient(BaseUri);                
 					var restResponse = rs.Post<OAuthTokens>(authRequest);
+					_expiry = DateTime.UtcNow.AddSeconds(restResponse.Data.expires_in);
 					_authenticator = new RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator(restResponse.Data.access_token, restResponse.Data.token_type);              
 				}
 				_authenticator.Authenticate(client, request);

@@ -13,10 +13,8 @@ namespace GreenAndGo.Models
         public DateTime? Collection { get; set; }
     }
 
-    public class QuoteViewModel
+    public class QuoteViewModel :QueryViewModel
     {
-        public string DestinationPostcode { get; set; }
-        public string OriginPostcode { get; set; }
         public Quote[] Quotes { get; set; }
     }
 
@@ -28,12 +26,5 @@ namespace GreenAndGo.Models
         public decimal Cost { get; set; }
     }
 
-    public class Parcel
-    {
-        public decimal Weight { get; set; }
-        public decimal Length { get; set; }
-        public decimal Width { get; set; }
-        public decimal Height { get; set; }
-        public string Description { get; set; }
-    }
+   
 }

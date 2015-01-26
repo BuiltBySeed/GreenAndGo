@@ -11,4 +11,5 @@
         <h3>@quote.Service</h3>
         <p>£@quote.Cost</p>
     </div>
-}
+    <a href="~/Book/?serviceId=@quote.ServiceId&Sender.Address.Postcode=@Model.OriginPostcode&Recipient.Address.Postcode=@Model.DestinationPostcode&Parcels[0].Weight=@Model.Parcels[0].Weight">Book!</a>
+ }

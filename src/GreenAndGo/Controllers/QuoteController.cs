@@ -18,11 +18,11 @@ namespace GreenAndGo.Controllers
                 query.Collection = DateTime.Now.AddDays(1);
             }
 
-            var client = new Net.Sendvia.Client(Settings.Default.Client_Id, Settings.Default.Client_Secret);
+            var client = Services.Sendvia.Client;
             var sQuote = client.Quote_Create(new Net.Sendvia.Models.Query
             {
                 Id = Guid.NewGuid(),
-                Currency = 826,
+                Currency = Models.Constants.Currency,
                 Shipments = new List<Net.Sendvia.Models.Shipment>
                 {
                     new Net.Sendvia.Models.Shipment
@@ -46,7 +46,7 @@ namespace GreenAndGo.Controllers
                             Address = new Net.Sendvia.Models.Address
                             {
                                 PostalArea= query.OriginPostcode,
-                                CountryIso = 826
+                                CountryIso = Models.Constants.CountryIso
                             }
                         },
                         Recipient = new Net.Sendvia.Models.Contact
@@ -54,7 +54,7 @@ namespace GreenAndGo.Controllers
                             Address = new Net.Sendvia.Models.Address
                             {
                                 PostalArea = query.DestinationPostcode,
-                                CountryIso = 826
+                                CountryIso =  Models.Constants.CountryIso
                             }
                         }
                     }
@@ -65,6 +65,7 @@ namespace GreenAndGo.Controllers
             {
                 DestinationPostcode = query.DestinationPostcode,
                 OriginPostcode = query.OriginPostcode,
+                Parcels = query.Parcels,
                 Quotes = sQuote.QuoteShipments.Select(qs =>
                     {
                         return new Models.Quote

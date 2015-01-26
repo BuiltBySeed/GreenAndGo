@@ -15,11 +15,11 @@ namespace GreenAndGo.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var client = new Net.Sendvia.Client(Settings.Default.Client_Id, Settings.Default.Client_Secret);
+                var client = Services.Sendvia.Client;
                 var receipt = client.Booking_Create(new Net.Sendvia.Models.Booking
                 {
                     PaymentMethod = "Paypal",
-                    Currency = 826,
+                    Currency = Models.Constants.Currency,
                     BookingShipments = new List<Net.Sendvia.Models.BookingShipment>
                     {
                         new Net.Sendvia.Models.BookingShipment()
@@ -39,8 +39,8 @@ namespace GreenAndGo.Controllers
                                         City = booking.Sender.Address.Town,
                                         GoverningDistrict  = booking.Sender.Address.County,
                                         PostalArea = booking.Sender.Address.Postcode,
-                                        CountryIso  = 826,
-                                        Country = "UK"
+                                        CountryIso  = Models.Constants.CountryIso,
+                                        Country = Models.Constants.Country
                                     }
                                 },
                                 Recipient = new Net.Sendvia.Models.Contact
@@ -55,8 +55,8 @@ namespace GreenAndGo.Controllers
                                         City = booking.Recipient.Address.Town,
                                         GoverningDistrict  = booking.Recipient.Address.County,
                                         PostalArea = booking.Recipient.Address.Postcode,
-                                        CountryIso  = 826,
-                                        Country = "UK"
+                                        CountryIso  = Models.Constants.CountryIso,
+                                        Country = Models.Constants.Country
                                     }
                                 },
                                 Collection = booking.Collection,
@@ -71,7 +71,9 @@ namespace GreenAndGo.Controllers
                                            Height = (int)x.Height *10,//cm to mm
                                            Width = (int)x.Width * 10,//cm to mm
                                        },
-                                       Description = x.Description
+                                       Description = x.Description,
+                                       Value = x.Value,
+                                       Currency = Models.Constants.Currency
                                     };
                                 }).ToList()
                             }

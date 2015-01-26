@@ -112,9 +112,6 @@
     <Compile Include="Service.cs">
       <DependentUpon>Client.tt</DependentUpon>
     </Compile>
-    <Compile Include="Setting.cs">
-      <DependentUpon>Client.tt</DependentUpon>
-    </Compile>
     <Compile Include="Shipment.cs">
       <DependentUpon>Client.tt</DependentUpon>
     </Compile>

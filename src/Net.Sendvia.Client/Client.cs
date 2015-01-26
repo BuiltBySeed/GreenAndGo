@@ -15,13 +15,9 @@ namespace Net.Sendvia
 
 	public class Client : RestClient
 	{
-#if DEBUG
-        private const string BaseUri = "http://devlocal/Postal.Api/";
-#else
+
         private const string BaseUri = "https://www.sendvia.co.uk/rest/alpha5/";
-#endif
-                     
-         
+
         public Client(string client_Id, string client_secret) : base(BaseUri) 
         {
             this.Authenticator = new OAuth2Authenticator(client_Id, client_secret);
@@ -170,32 +166,6 @@ namespace Net.Sendvia
 				request.AddUrlSegment("id", id.ToString());
 				request.AddUrlSegment("size", size.ToString());
 				request.AddBody(logo);
-			
-			return Execute(request).Content;
-		}
-
-		public List<Setting> Carrier_ReadSettings(Guid id)
-		{
-			var request = new RestRequest("/carriers/{id}/settings", Method.GET){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("id", id.ToString());
-			
-			return Execute<List<Setting>>(request).Data;
-		}
-
-		public void Carrier_PutSettings(Guid id, List<Setting> settings)
-		{
-			var request = new RestRequest("/carriers/{id}/settings", Method.PUT){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("id", id.ToString());
-				request.AddBody(settings);
-			
-			Execute(request);
-		}
-
-		public string Carrier_DeleteSettings(Guid id, string key)
-		{
-			var request = new RestRequest("/carriers/{id}/settings/{key}", Method.DELETE){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("id", id.ToString());
-				request.AddUrlSegment("key", key.ToString());
 			
 			return Execute(request).Content;
 		}
@@ -515,35 +485,6 @@ namespace Net.Sendvia
 			return Execute(request).Content;
 		}
 
-		public List<Setting> Service_ReadSettings(Guid carrierId, Guid id)
-		{
-			var request = new RestRequest("/carriers/{carrierId}/services/{id}/settings", Method.GET){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("carrierId", carrierId.ToString());
-				request.AddUrlSegment("id", id.ToString());
-			
-			return Execute<List<Setting>>(request).Data;
-		}
-
-		public string Service_PutSettings(Guid carrierId, Guid id, List<Setting> settings)
-		{
-			var request = new RestRequest("/carriers/{carrierId}/services/{id}/settings", Method.PUT){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("carrierId", carrierId.ToString());
-				request.AddUrlSegment("id", id.ToString());
-				request.AddBody(settings);
-			
-			return Execute(request).Content;
-		}
-
-		public string Service_DeleteSettings(Guid carrierId, Guid id, string key)
-		{
-			var request = new RestRequest("/carriers/{carrierId}/services/{id}/settings/{key}", Method.DELETE){ RequestFormat = DataFormat.Json };
-				request.AddUrlSegment("carrierId", carrierId.ToString());
-				request.AddUrlSegment("id", id.ToString());
-				request.AddUrlSegment("key", key.ToString());
-			
-			return Execute(request).Content;
-		}
-
 		public string Shipment_Create(Shipment endpoint)
 		{
 			var request = new RestRequest("/shipments", Method.POST){ RequestFormat = DataFormat.Json };
@@ -629,15 +570,13 @@ namespace Net.Sendvia
 	
 		private class OAuth2Authenticator :IAuthenticator
 		{
-#if DEBUG
-			private const string BaseUri = "http://devlocal/Postal.Website";
-#else
+
 			private const string BaseUri = "https://www.sendvia.co.uk/alpha5";
-#endif
 
 			private string _client_Id;
 			private string _client_Secret;
 			private OAuth2AuthorizationRequestHeaderAuthenticator _authenticator;
+			private DateTime _expiry;
 
 			public OAuth2Authenticator(string client_Id, string client_Secret)
 			{
@@ -647,7 +586,7 @@ namespace Net.Sendvia
 
 			void IAuthenticator.Authenticate(IRestClient client, IRestRequest request)
 			{
-				if (_authenticator == null)
+				if (_authenticator == null || DateTime.UtcNow > _expiry)
 				{
 					var authRequest = new RestRequest("/token", Method.POST);
 					authRequest.AddParameter("client_id", _client_Id);
@@ -656,6 +595,7 @@ namespace Net.Sendvia
 					authRequest.AddParameter("response_type", "token");
 					RestClient rs = new RestClient(BaseUri);                
 					var restResponse = rs.Post<OAuthTokens>(authRequest);
+					_expiry = DateTime.UtcNow.AddSeconds(restResponse.Data.expires_in);
 					_authenticator = new RestSharp.OAuth2AuthorizationRequestHeaderAuthenticator(restResponse.Data.access_token, restResponse.Data.token_type);              
 				}
 				_authenticator.Authenticate(client, request);
