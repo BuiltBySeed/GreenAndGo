@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +8,11 @@ namespace GreenAndGo.Models
 {
     public class QueryViewModel
     {
+        [Required]
         public string DestinationPostcode { get; set; }
+        [Required]
         public string OriginPostcode { get; set; }
+        [Required]
         public Parcel[] Parcels { get; set; }
         public DateTime? Collection { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,27 +8,15 @@ namespace GreenAndGo.Models
 {
     public class BookingViewModel
     {
+        [Required]
         public Guid ServiceId { get; set; }
+        [Required]
         public Contact Sender { get; set; }
+        [Required]
         public Contact Recipient { get; set; }
+        [Required]
         public Parcel[] Parcels { get; set; }
+        [Required]
         public DateTime Collection { get; set; }
-    }
-
-    public class Contact
-    {
-        public string Name { get; set; }
-        public Address Address { get; set; }
-        public string Telephone { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class Address
-    {
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string Town { get; set; }
-        public string County { get; set; }
-        public string Postcode { get; set; }
     }
 }

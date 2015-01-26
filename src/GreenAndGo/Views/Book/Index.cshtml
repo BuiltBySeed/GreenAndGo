@@ -1,0 +1,25 @@
+﻿@model GreenAndGo.Models.BookingViewModel
+@{
+    ViewBag.Title = "Green and Go!";
+}
+@Html.ValidationSummary(true)
+<div class="row">
+    @using (Html.BeginForm("Index", "Book", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Collection, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Collection, new { @class = "form-control" })
+            </div>
+        </div>
+          @(Html.EditorFor(m => m.Sender))
+          @(Html.EditorFor(m => m.Recipient))
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Pay now!" class="btn btn-default" />
+            </div>
+        </div>
+    }
+
+
+</div>
