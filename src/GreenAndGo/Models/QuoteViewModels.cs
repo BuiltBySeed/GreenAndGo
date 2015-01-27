@@ -9,11 +9,14 @@ namespace GreenAndGo.Models
     public class QueryViewModel
     {
         [Required]
+        [Display(Name = "To Postcode")]
         public string DestinationPostcode { get; set; }
         [Required]
+        [Display(Name = "From Postcode")]
         public string OriginPostcode { get; set; }
         [Required]
         public Parcel[] Parcels { get; set; }
+        [Display(Name = "Time to Collect")]
         public DateTime? Collection { get; set; }
     }
 

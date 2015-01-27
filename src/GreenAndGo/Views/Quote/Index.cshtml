@@ -12,5 +12,5 @@
         <p>£@quote.Cost</p>
     </div>
     int i = 0; 
-    <a href="~/Book/?serviceId=@quote.ServiceId&Sender.Address.Postcode=@Model.OriginPostcode&Recipient.Address.Postcode=@Model.DestinationPostcode&@string.Join("&",@Model.Parcels.Select(p=> string.Format("Parcels[{0}].Weight={1}&Parcels[{0}].Length={2}&Parcels[{0}].Width={3}&Parcels[{0}].Height={4}&Parcels[{0}].Value={5}&Parcels[{0}].Description={6}", i++,p.Weight,p.Length,p.Width, p.Height,p.Value, p.Description)))">Book!</a>
+    <a href="~/Book/?serviceId=@quote.ServiceId&Sender.Address.Postcode=@Model.OriginPostcode&Recipient.Address.Postcode=@Model.DestinationPostcode&Collection=@Model.Collection&@string.Join("&",@Model.Parcels.Select(p=> string.Format("Parcels[{0}].Weight={1}&Parcels[{0}].Length={2}&Parcels[{0}].Width={3}&Parcels[{0}].Height={4}&Parcels[{0}].Value={5}&Parcels[{0}].Description={6}", i++,p.Weight,p.Length,p.Width, p.Height,p.Value, p.Description)))">Book!</a>
 }

@@ -18,11 +18,17 @@ namespace GreenAndGo.Models
     public class Parcel
     {
         [Required]
+        [Display(Name = "Parcel Weight (Kg)")]
         public decimal Weight { get; set; }
+        [Display(Name = "Parcel Length (cm)")]
         public decimal Length { get; set; }
+        [Display(Name = "Parcel Width (cm)")]
         public decimal Width { get; set; }
+        [Display(Name = "Parcel Height (cm)")]
         public decimal Height { get; set; }
+        [Display(Name = "Parcel Contents")]
         public string Description { get; set; }
+        [Display(Name = "Parcel Value (£)")]
         public decimal Value { get; set; }
     }
 

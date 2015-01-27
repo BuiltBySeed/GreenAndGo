@@ -65,6 +65,7 @@ namespace GreenAndGo.Controllers
             {
                 DestinationPostcode = query.DestinationPostcode,
                 OriginPostcode = query.OriginPostcode,
+                Collection = query.Collection,
                 Parcels = query.Parcels,
                 Quotes = sQuote.QuoteShipments.Select(qs =>
                     {

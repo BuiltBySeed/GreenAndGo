@@ -235,8 +235,9 @@
     <Content Include="Views\Quote\Index.cshtml" />
     <Content Include="Views\Quote\_QueryPartial.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\Shared\_AddressFormPartial.cshtml" />
-    <Content Include="Views\Shared\_ContactFormPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Contact.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Parcel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
