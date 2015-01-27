@@ -10,7 +10,6 @@ namespace GreenAndGo.Controllers
     public class QuoteController : Controller
     {
       
-
         public ActionResult Index(Models.QueryViewModel query)
         {
             if (!query.Collection.HasValue)
