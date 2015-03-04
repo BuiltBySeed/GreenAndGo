@@ -11,19 +11,19 @@ namespace Net.Sendvia.Models
 {
 	public partial class Booking
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public Guid QuoteId
+		public virtual Guid? QuoteId
 		{get;set;}
 	
-		public string PaymentMethod
+		public virtual string PaymentMethod
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
-		public List<BookingShipment> BookingShipments
+		public virtual List<BookingShipment> BookingShipments
 		{get;set;}
 	
 	}

@@ -17,7 +17,7 @@ var code = new CodeGenerationTools(this);
 
 WriteHeader(fileManager);
 
-string baseUri = "http://www.sendvia.co.uk/rest/alpha5";
+string baseUri = "https://www.sendvia.co.uk/rest/alpha5";
 string swaggerUri = baseUri + "/swagger/api-docs";
 dynamic api_docs = Help.MakeRequest(swaggerUri);
 List<dynamic> models = new List<dynamic>();
@@ -192,7 +192,7 @@ public void WriteProperty(dynamic prop, string name)
 {
 	#>
 
-		public <#=GetTypeString(prop)#> <#=name#>
+		public virtual <#=GetTypeString(prop)#> <#=name#>
 		{get;set;}
 	<#+
 }
@@ -280,6 +280,7 @@ public string GetTypeString(dynamic obj)
 	if(obj.type == null)
 	{
 		r = obj.dollarRef.ToString();
+		if(r=="Guid") r = "Guid?";
 		return r;
 	}
 	if(obj.type.ToString() == "array")

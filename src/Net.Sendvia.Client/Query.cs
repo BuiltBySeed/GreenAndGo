@@ -11,13 +11,13 @@ namespace Net.Sendvia.Models
 {
 	public partial class Query
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
-		public List<Shipment> Shipments
+		public virtual List<Shipment> Shipments
 		{get;set;}
 	
 	}

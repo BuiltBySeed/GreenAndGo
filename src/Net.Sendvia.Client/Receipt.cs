@@ -11,22 +11,22 @@ namespace Net.Sendvia.Models
 {
 	public partial class Receipt
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public Guid BookingId
+		public virtual Guid? BookingId
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
-		public string PaymentUrl
+		public virtual string PaymentUrl
 		{get;set;}
 	
-		public DateTime? Paid
+		public virtual DateTime? Paid
 		{get;set;}
 	
-		public List<ReceiptItem> ReceiptItems
+		public virtual List<ReceiptItem> ReceiptItems
 		{get;set;}
 	
 	}

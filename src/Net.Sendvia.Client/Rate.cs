@@ -11,58 +11,58 @@ namespace Net.Sendvia.Models
 {
 	public partial class Rate
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public DateTime? Start
+		public virtual DateTime? Start
 		{get;set;}
 	
-		public DateTime? End
+		public virtual DateTime? End
 		{get;set;}
 	
-		public int MinWeight
+		public virtual int MinWeight
 		{get;set;}
 	
-		public int MaxWeight
+		public virtual int MaxWeight
 		{get;set;}
 	
-		public int MinVolume
+		public virtual int MinVolume
 		{get;set;}
 	
-		public int MaxVolume
+		public virtual int MaxVolume
 		{get;set;}
 	
-		public int MinLength
+		public virtual int MinLength
 		{get;set;}
 	
-		public int MaxLength
+		public virtual int MaxLength
 		{get;set;}
 	
-		public int MinWidth
+		public virtual int MinWidth
 		{get;set;}
 	
-		public int MaxWidth
+		public virtual int MaxWidth
 		{get;set;}
 	
-		public int MinHeight
+		public virtual int MinHeight
 		{get;set;}
 	
-		public int MaxHeight
+		public virtual int MaxHeight
 		{get;set;}
 	
-		public int MinQuantity
+		public virtual int MinQuantity
 		{get;set;}
 	
-		public int MaxQuantity
+		public virtual int MaxQuantity
 		{get;set;}
 	
-		public decimal WeightRate
+		public virtual decimal WeightRate
 		{get;set;}
 	
-		public decimal ItemRate
+		public virtual decimal ItemRate
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
 	}

@@ -11,16 +11,16 @@ namespace Net.Sendvia.Models
 {
 	public partial class ReceiptItem
 	{
-		public Guid ShipmentId
+		public virtual Guid? ShipmentId
 		{get;set;}
 	
-		public decimal Cost
+		public virtual decimal Cost
 		{get;set;}
 	
-		public Service Service
+		public virtual Service Service
 		{get;set;}
 	
-		public bool Vat
+		public virtual bool Vat
 		{get;set;}
 	
 	}

@@ -11,7 +11,7 @@ namespace Net.Sendvia.Models
 {
 	public partial class Pdf
 	{
-		public byte[] Data
+		public virtual byte[] Data
 		{get;set;}
 	
 	}

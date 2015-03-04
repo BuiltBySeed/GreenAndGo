@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace GreenAndGo.Models
 {
@@ -21,11 +23,11 @@ namespace GreenAndGo.Models
         [Display(Name = "Parcel Weight (Kg)")]
         public decimal Weight { get; set; }
         [Display(Name = "Parcel Length (cm)")]
-        public decimal Length { get; set; }
+        public decimal? Length { get; set; }
         [Display(Name = "Parcel Width (cm)")]
-        public decimal Width { get; set; }
+        public decimal? Width { get; set; }
         [Display(Name = "Parcel Height (cm)")]
-        public decimal Height { get; set; }
+        public decimal? Height { get; set; }
         [Display(Name = "Parcel Contents")]
         public string Description { get; set; }
         [Display(Name = "Parcel Value (£)")]
@@ -34,6 +36,10 @@ namespace GreenAndGo.Models
 
     public class Contact
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ScriptIgnore]
+        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -46,6 +52,10 @@ namespace GreenAndGo.Models
 
     public class Address
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ScriptIgnore]
+        public Guid Id { get; set; }
         [Required]
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -54,5 +64,11 @@ namespace GreenAndGo.Models
         public string County { get; set; }
         [Required]
         public string Postcode { get; set; }
+
+        public bool IsTheSame(Address address)
+        {
+            return this.Postcode == address.Postcode
+                && (string.IsNullOrEmpty(this.AddressLine1) || string.IsNullOrEmpty(address.AddressLine1));
+        }
     }
 }

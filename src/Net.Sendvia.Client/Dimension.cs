@@ -11,13 +11,13 @@ namespace Net.Sendvia.Models
 {
 	public partial class Dimension
 	{
-		public int Height
+		public virtual int Height
 		{get;set;}
 	
-		public int Length
+		public virtual int Length
 		{get;set;}
 	
-		public int Width
+		public virtual int Width
 		{get;set;}
 	
 	}

@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenAndGo", "GreenAndGo\GreenAndGo.csproj", "{20BCF8EB-BB36-432A-8FED-2B74FFDF2F0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenAndGo.Tests", "..\..\..\Users\alex west\Development\GreenAndGo\GreenAndGo.Tests\GreenAndGo.Tests.csproj", "{1E930A77-19AD-4B8E-9141-461BF15E3F3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Sendvia.Client", "Net.Sendvia.Client\Net.Sendvia.Client.csproj", "{1638DDFC-23E9-4961-B231-FA2B0C2F69BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C03233F0-941D-401C-A423-E83924519467}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

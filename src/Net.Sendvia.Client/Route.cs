@@ -11,22 +11,22 @@ namespace Net.Sendvia.Models
 {
 	public partial class Route
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public Area Origin
+		public virtual Area Origin
 		{get;set;}
 	
-		public Area Destination
+		public virtual Area Destination
 		{get;set;}
 	
-		public int MinDays
+		public virtual int MinDays
 		{get;set;}
 	
-		public int MaxDays
+		public virtual int MaxDays
 		{get;set;}
 	
-		public int CollectionTime
+		public virtual int CollectionTime
 		{get;set;}
 	
 	}

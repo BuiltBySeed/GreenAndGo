@@ -11,25 +11,25 @@ namespace Net.Sendvia.Models
 {
 	public partial class QuoteShipment
 	{
-		public Guid ShipmentId
+		public virtual Guid? ShipmentId
 		{get;set;}
 	
-		public decimal Cost
+		public virtual decimal Cost
 		{get;set;}
 	
-		public decimal Surcharge
+		public virtual decimal Surcharge
 		{get;set;}
 	
-		public DateTime? EarliestCollection
+		public virtual DateTime? EarliestCollection
 		{get;set;}
 	
-		public Service Service
+		public virtual Service Service
 		{get;set;}
 	
-		public Carrier Carrier
+		public virtual Carrier Carrier
 		{get;set;}
 	
-		public bool Vat
+		public virtual bool Vat
 		{get;set;}
 	
 	}

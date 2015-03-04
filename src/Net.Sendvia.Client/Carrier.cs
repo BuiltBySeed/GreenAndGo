@@ -11,19 +11,19 @@ namespace Net.Sendvia.Models
 {
 	public partial class Carrier
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Name
+		public virtual string Name
 		{get;set;}
 	
-		public bool Private
+		public virtual bool Private
 		{get;set;}
 	
-		public bool Editable
+		public virtual bool Editable
 		{get;set;}
 	
-		public List<Service> Services
+		public virtual List<Service> Services
 		{get;set;}
 	
 	}

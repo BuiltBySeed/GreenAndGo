@@ -11,16 +11,16 @@ namespace Net.Sendvia.Models
 {
 	public partial class Status
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Type
+		public virtual string Type
 		{get;set;}
 	
-		public DateTime? Date
+		public virtual DateTime? Date
 		{get;set;}
 	
-		public string Message
+		public virtual string Message
 		{get;set;}
 	
 	}

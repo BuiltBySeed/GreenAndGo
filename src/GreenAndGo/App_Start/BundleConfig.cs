@@ -20,12 +20,17 @@ namespace GreenAndGo
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/bootstrap-theme.min.js",
+                      "~/Scripts/respond.js",
+                      "~/Scripts/moment.min.js",
+                      "~/Scripts/bootstrap-datetimepicker.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-theme.min.css",
+                      "~/Content/bootstrap-datetimepicker.min.css"));
         }
     }
 }

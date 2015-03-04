@@ -11,46 +11,46 @@ namespace Net.Sendvia.Models
 {
 	public partial class Address
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Company
+		public virtual string Company
 		{get;set;}
 	
-		public string Department
+		public virtual string Department
 		{get;set;}
 	
-		public string Floor
+		public virtual string Floor
 		{get;set;}
 	
-		public string StreetNumber
+		public virtual string StreetNumber
 		{get;set;}
 	
-		public string BuildingName
+		public virtual string BuildingName
 		{get;set;}
 	
-		public string BoxNumber
+		public virtual string BoxNumber
 		{get;set;}
 	
-		public string Street
+		public virtual string Street
 		{get;set;}
 	
-		public string Locality
+		public virtual string Locality
 		{get;set;}
 	
-		public string City
+		public virtual string City
 		{get;set;}
 	
-		public string GoverningDistrict
+		public virtual string GoverningDistrict
 		{get;set;}
 	
-		public string PostalArea
+		public virtual string PostalArea
 		{get;set;}
 	
-		public string Country
+		public virtual string Country
 		{get;set;}
 	
-		public int CountryIso
+		public virtual int CountryIso
 		{get;set;}
 	
 	}

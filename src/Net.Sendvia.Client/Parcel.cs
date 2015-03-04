@@ -11,28 +11,28 @@ namespace Net.Sendvia.Models
 {
 	public partial class Parcel
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Reference
+		public virtual string Reference
 		{get;set;}
 	
-		public int Weight
+		public virtual int Weight
 		{get;set;}
 	
-		public Dimension Size
+		public virtual Dimension Size
 		{get;set;}
 	
-		public int CommodityCode
+		public virtual int CommodityCode
 		{get;set;}
 	
-		public string Description
+		public virtual string Description
 		{get;set;}
 	
-		public decimal Value
+		public virtual decimal Value
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
 	}

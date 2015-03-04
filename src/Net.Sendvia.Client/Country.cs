@@ -11,10 +11,10 @@ namespace Net.Sendvia.Models
 {
 	public partial class Country
 	{
-		public int Iso
+		public virtual int Iso
 		{get;set;}
 	
-		public string Name
+		public virtual string Name
 		{get;set;}
 	
 	}

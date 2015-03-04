@@ -32,12 +32,14 @@ namespace GreenAndGo.Controllers
                                 return new Net.Sendvia.Models.Parcel
                                 {
                                    Weight = (int) x.Weight *1000, //Kg to g
-                                   Size = new Net.Sendvia.Models.Dimension
+                                   Size = (x.Length.HasValue && x.Height.HasValue && x.Width.HasValue) ?
+                                   new Net.Sendvia.Models.Dimension
                                    {
                                        Length = (int)x.Length *10, //cm to mm
                                        Height = (int)x.Height *10,//cm to mm
                                        Width = (int)x.Width * 10,//cm to mm
                                    }
+                                   :null
                                 };
                             }).ToList(),
                         Sender = new Net.Sendvia.Models.Contact
@@ -70,13 +72,13 @@ namespace GreenAndGo.Controllers
                     {
                         return new Models.Quote
                         {
-                            ServiceId = qs.Service.Id,
+                            ServiceId = qs.Service.Id.Value,
                             Service = qs.Service.Name, 
                             Carrier = qs.Carrier.Name,
                             Cost = qs.Cost
                         };
                     }
-                    ).ToArray()
+                    ).OrderBy(x=>x.Cost).ToArray()
             };
 
             return View(quote);

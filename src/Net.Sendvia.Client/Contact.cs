@@ -11,28 +11,28 @@ namespace Net.Sendvia.Models
 {
 	public partial class Contact
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public Address Address
+		public virtual Address Address
 		{get;set;}
 	
-		public string FirstName
+		public virtual string FirstName
 		{get;set;}
 	
-		public string MiddleNames
+		public virtual string MiddleNames
 		{get;set;}
 	
-		public string Surname
+		public virtual string Surname
 		{get;set;}
 	
-		public string PhoneNumber
+		public virtual string PhoneNumber
 		{get;set;}
 	
-		public string MobileNumber
+		public virtual string MobileNumber
 		{get;set;}
 	
-		public string Email
+		public virtual string Email
 		{get;set;}
 	
 	}

@@ -11,31 +11,31 @@ namespace Net.Sendvia.Models
 {
 	public partial class Service
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Name
+		public virtual string Name
 		{get;set;}
 	
-		public string Transport
+		public virtual string Transport
 		{get;set;}
 	
-		public bool Tracked
+		public virtual bool Tracked
 		{get;set;}
 	
-		public bool Volumetric
+		public virtual bool Volumetric
 		{get;set;}
 	
-		public bool PrintLabels
+		public virtual bool PrintLabels
 		{get;set;}
 	
-		public string Description
+		public virtual string Description
 		{get;set;}
 	
-		public string Information
+		public virtual string Information
 		{get;set;}
 	
-		public List<Route> Routes
+		public virtual List<Route> Routes
 		{get;set;}
 	
 	}

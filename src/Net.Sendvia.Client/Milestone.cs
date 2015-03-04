@@ -11,19 +11,19 @@ namespace Net.Sendvia.Models
 {
 	public partial class Milestone
 	{
-		public int CountryIso
+		public virtual int CountryIso
 		{get;set;}
 	
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Type
+		public virtual string Type
 		{get;set;}
 	
-		public DateTime? Date
+		public virtual DateTime? Date
 		{get;set;}
 	
-		public string Message
+		public virtual string Message
 		{get;set;}
 	
 	}

@@ -11,16 +11,16 @@ namespace Net.Sendvia.Models
 {
 	public partial class Markup
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public decimal Decimal
+		public virtual decimal Decimal
 		{get;set;}
 	
-		public decimal Amount
+		public virtual decimal Amount
 		{get;set;}
 	
-		public int Currency
+		public virtual int Currency
 		{get;set;}
 	
 	}

@@ -11,19 +11,19 @@ namespace Net.Sendvia.Models
 {
 	public partial class Area
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public string Name
+		public virtual string Name
 		{get;set;}
 	
-		public string Description
+		public virtual string Description
 		{get;set;}
 	
-		public string Boundary
+		public virtual string Boundary
 		{get;set;}
 	
-		public string Format
+		public virtual string Format
 		{get;set;}
 	
 	}

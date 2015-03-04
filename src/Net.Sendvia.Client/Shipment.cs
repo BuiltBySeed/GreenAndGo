@@ -11,31 +11,31 @@ namespace Net.Sendvia.Models
 {
 	public partial class Shipment
 	{
-		public Guid Id
+		public virtual Guid? Id
 		{get;set;}
 	
-		public Contact Sender
+		public virtual Contact Sender
 		{get;set;}
 	
-		public Contact Recipient
+		public virtual Contact Recipient
 		{get;set;}
 	
-		public List<Parcel> Parcels
+		public virtual List<Parcel> Parcels
 		{get;set;}
 	
-		public string Reference
+		public virtual string Reference
 		{get;set;}
 	
-		public DateTime? Collection
+		public virtual DateTime? Collection
 		{get;set;}
 	
-		public string Instructions
+		public virtual string Instructions
 		{get;set;}
 	
-		public bool Insured
+		public virtual bool Insured
 		{get;set;}
 	
-		public DateTime? Cancelled
+		public virtual DateTime? Cancelled
 		{get;set;}
 	
 	}

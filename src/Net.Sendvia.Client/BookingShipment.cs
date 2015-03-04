@@ -11,10 +11,10 @@ namespace Net.Sendvia.Models
 {
 	public partial class BookingShipment
 	{
-		public Shipment Shipment
+		public virtual Shipment Shipment
 		{get;set;}
 	
-		public Guid ServiceId
+		public virtual Guid? ServiceId
 		{get;set;}
 	
 	}

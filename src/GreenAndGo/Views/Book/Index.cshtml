@@ -12,12 +12,19 @@
                 @Html.TextBoxFor(m => m.Collection, new { @class = "form-control" })
             </div>
         </div>
-          @(Html.EditorFor(m => m.Sender))
-          @(Html.EditorFor(m => m.Recipient))
-          @(Html.EditorFor(m => m.Parcels[0]))
+          @Html.HiddenFor(m=>m.ServiceId)
+        <h4>To be sent from</h4>
+        <hr />
+          @Html.EditorFor(m => m.Sender)
+        <h4>To be delivered to</h4>
+        <hr />
+          @Html.EditorFor(m => m.Recipient)
+        <h4>Parcels</h4>
+        <hr />
+          @Html.EditorFor(m => m.Parcels[0])
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Pay now!" class="btn btn-default" />
+                <input type="submit" value="Pay & Book now!" class="btn btn-default" />
             </div>
         </div>
     }
